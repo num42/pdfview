@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+
+android {
+  compileSdkVersion 28
+  buildToolsVersion '28.0.3'
+
+  defaultConfig {
+    minSdkVersion 21
+    targetSdkVersion 28
+  }
+}
+
+dependencies {
+  implementation "androidx.annotation:annotation:1.0.1"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+repositories {
+  mavenCentral()
+}
