@@ -1,6 +1,20 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: "com.vanniktech.maven.publish"
 
+buildscript {
+  repositories {
+    mavenCentral()
+    google()
+    gradlePluginPortal()
+  }
+  dependencies {
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.8.0'
+  }
+}
+
+group = GROUP
+version = VERSION_NAME
 
 android {
   compileSdkVersion 28
@@ -9,14 +23,33 @@ android {
   defaultConfig {
     minSdkVersion 21
     targetSdkVersion 28
+
   }
 }
 
 dependencies {
-  implementation "androidx.annotation:annotation:1.0.1"
+  implementation "androidx.annotation:annotation:1.1.0"
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 repositories {
   mavenCentral()
+  google()
+}
+
+
+
+mavenPublish {
+  targets {
+    uploadArchives {
+      signing = false
+      releaseRepositoryUrl = "https://bintray.com/api/v1/maven/n42/maven/pdfview/;publish=1"
+
+      Properties properties = new Properties()
+      properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+      repositoryUsername = properties.getProperty("bintray.user")
+      repositoryPassword = properties.getProperty("bintray.apikey")
+    }
+  }
 }

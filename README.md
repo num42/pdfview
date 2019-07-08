@@ -4,6 +4,7 @@ This library is able to show a pdf file inside of a View.
 
 It is a effort to merge the great [subsampling-scale-image-view] with our
 [subsampling-pdf-decoder] to achieve a more developer friendly view to handle pdfs.
+Idea and initial development: [Manuel Lilienberg](https://github.com/mlilienberg)
 
 
 Usage
@@ -21,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compile 'de.number42:pdfview:0.1.0@aar'
+    compile 'de.number42:pdfview:0.1.0'
 }
 ```
 
